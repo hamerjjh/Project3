@@ -14,11 +14,15 @@ const LocationsList = (props) => {
     <LocationsListStyles>
       {props.locations.map((location) => {
         return (
-          <Locations key={location._id} city={location.city} state={location.state} moves={location.moves} />
+          <Locations key={location._id} _id={location._id}  
+          handleChange={props.handleChange}
+          updateLocation={props.updateLocation} deleteLocation={props.deleteLocation}
+          city={location.city} state={location.state} moves={location.moves}/>
         )
       })}
-    </LocationsListStyles>
+    </LocationsListStyles> 
   )
+  
 }
 
 export default LocationsList
