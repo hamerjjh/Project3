@@ -1,18 +1,47 @@
+
 import React, { Component } from 'react'
+import axios from 'axios'
 
 class SignUpForm extends Component {
+  state = {
+    newUser: {
+      userName: '',
+      email: ''
+    }
+  }
+
+  handleChange = (event) => {
+    const attribute = event.target.name
+    const updateUser = {...this.state.newUser}
+    updateUser[attribute] = event.target.value
+    this.setState({newUser: updateUser})
+  }
+
+  handleSubmit = async (event) => {
+    event.preventDefault()
+    const res = await axios.post('/api/users', {
+      'user': this.state.newUser
+    })
+    console.log(res.data)
+  }
+
   render () {
     return (
       <div>
         <h1>Sign-Up</h1>
-        <form >
+        <form onSubmit={this.handleSubmit}>
           <div>
             <label htmlFor="userName">User Name</label>
-            <input  name="userName" type="text" />
+            <input
+              onChange={this.handleChange} name="userName"
+              type="text" value={this.state.newUser.userName}
+            />
           </div>
           <div>
             <label htmlFor="email">Email</label>
-            <input  name="email" type="text" />
+            <input onChange={this.handleChange}
+              value={this.state.newUser.email}
+              name="email" type="text" />
           </div>
           <button>Sign Up</button>
         </form>
