@@ -21,14 +21,40 @@ router.get('/:id', async (req, res) => {
   }
 })
 
+//Create
 router.post('/', async (req, res) => {
   try {
-    const newUser = new User(req.body.user)
+    const newUser = new UserModel(req.body.user)
     const saved = await newUser.save()
     res.json(saved)
   } catch (err) {
     res.send(err)
   }
+})
+
+//Update
+router.patch('/:id', async (req, res) => {
+    try {
+        const updatedUser = req.body.user
+        const user = await UserModel.findById(req.params.userId)
+        user.userName = updatedUser.userName
+        user.email = updatedUser.email
+        const saved = await user.save()
+        res.json(saved)
+    } catch (err) {
+        res.send(err)
+    }
+})
+
+//Delete
+router.delete('/:id', async (req, res) => {
+    try {
+        const user = await UserModel.findById(req.params.userId).remove()
+        const users = await UserModel.find({})
+        res.json(users)
+    } catch (err) {
+        res.send(err)
+    }
 })
 
 module.exports = router

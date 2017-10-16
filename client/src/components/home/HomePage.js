@@ -28,7 +28,7 @@ class HomePage extends Component {
       <div>
         <h1>Log-In</h1>
         <h3>Please Select an Existing User</h3>
-        {this.state.users.map(user => {
+        {this.state.users.map((user) => {
           return (<Link key={user._id} to={`/users/${user._id}`}>{user.userName}</Link>)
         })}
         <SignUpForm />

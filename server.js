@@ -3,6 +3,7 @@ const express = require('express');
 const bodyParser = require('body-parser');
 const mongoose = require('mongoose');
 const UsersController = require('./routes/UsersController')
+const LocationsController = require('./routes/LocationsController')
 
 
 const app = express();
