@@ -1,8 +1,8 @@
 import React, { Component } from 'react'
 import { BrowserRouter as Router, Switch, Route, Link } from 'react-router-dom'
-import HomePage from './components/home/HomePage'
-import MovesPage from './components/moves/MovesPage'
-import LocationsPage from './components/locations/LocationsPage'
+import HomePage from './components/home/HomePage.js'
+import MovesPage from './components/moves/MovesPage.js'
+import LocationsPage from './components/locations/LocationsPage.js'
 
 class App extends Component {
   render () {

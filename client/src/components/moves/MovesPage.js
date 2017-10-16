@@ -44,4 +44,4 @@ class MovesPage extends Component {
     )
   }
 }
-export default MovePage
+export default MovesPage
