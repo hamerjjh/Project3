@@ -14,7 +14,7 @@ const MovesList = (props) => {
     <MovesListStyles>
       {props.moves.map((move) => {
         return (
-          <Moves key={move._id} title={move.title} description={move.description} />
+          <Moves key={move._id} description={move.description} completed={move.completed} />
         )
       })}
     </MovesListStyles>

@@ -5,9 +5,6 @@ mongoose.Promise = global.Promise
 
 const { UserModel, MoveModel, LocationModel } = require('./schema')
 
-const atlanta = new LocationModel({city: "Atlanta", state:"GA",})
-const chicago = new LocationModel({city: "Chicago", state:"IL",})
-const philadelphia = new LocationModel({city: "Philadelphia", state: "PA",})
 
 const dome = new MoveModel({description: "Visit the new Mercedes Benz Stadium", completed: false})
 const coke = new MoveModel({description: "Take a tour of the World of Coke", completed: false,})
@@ -24,13 +21,18 @@ const cheesesteak = new MoveModel({description: "Grab a cheesesteak", completed:
 const art = new MoveModel({description: "Run up the steps of the Art Museum", completed: false,})
 const family = new MoveModel({description: "Remember to see niece and nephew", completed: false,})
 
-
-const locations = [atlanta, chicago, philadelphia]
 const moves = [dome, coke, varsity, fish]
 const moves2 = [bean, pizza, tower, navy]
 const moves3 = [bell, cheesesteak, art, family]
 
-const jonathan = new UserModel({userName: 'Jonathan H', email: 'jonathan@gmail.com',})
+const atlanta = new LocationModel({city: "Atlanta", state:"GA", moves:moves})
+const chicago = new LocationModel({city: "Chicago", state:"IL", moves: moves2})
+const philadelphia = new LocationModel({city: "Philadelphia", state: "PA", moves:moves3})
+
+const locations = [atlanta, chicago, philadelphia]
+
+
+const jonathan = new UserModel({userName: 'Jonathan H', email: 'jonathan@gmail.com', locations: locations})
 
 UserModel.remove({})
   .then(() => jonathan.save())

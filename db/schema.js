@@ -31,7 +31,7 @@ const UserSchema = new Schema({
     email: {
         type: String,
     },
-    
+    locations: [LocationsSchema]
 })
 
 

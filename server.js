@@ -7,7 +7,7 @@ const UsersController = require('./routes/UsersController')
 
 const app = express();
 mongoose.Promise = global.Promise;
-mongoose.connect(process.env.MONGODB_URI); //mongodb://localhost/idea-board
+mongoose.connect(process.env.MONGODB_URI, { useMongoClient: true});
 
 const connection = mongoose.connection;
 connection.on('connected', () => {
