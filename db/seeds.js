@@ -9,20 +9,20 @@ const atlanta = new LocationModel({city: "Atlanta", state:"GA",})
 const chicago = new LocationModel({city: "Chicago", state:"IL",})
 const philadelphia = new LocationModel({city: "Philadelphia", state: "PA",})
 
-const dome = new MoveModel({description: "Visit the new Mercedes Benz Stadium", completed:""})
-const coke = new MoveModel({description: "Take a tour of the World of Coke", completed:"",})
-const varsity = new MoveModel({description: "Eat at the varsity", completed:"",})
-const fish = new MoveModel({description: "Explore the Georgia Aquarium", completed:"",})
+const dome = new MoveModel({description: "Visit the new Mercedes Benz Stadium", completed: false})
+const coke = new MoveModel({description: "Take a tour of the World of Coke", completed: false,})
+const varsity = new MoveModel({description: "Eat at the varsity", completed: false,})
+const fish = new MoveModel({description: "Explore the Georgia Aquarium", completed: false,})
 
-const bean = new MoveModel({description: "Take a picture in front of the bean", completed:""})
-const pizza = new MoveModel({description: "Get a slice of deep dish pizza", completed:"",})
-const tower = new MoveModel({description: "Go to the top of Willis Tower", completed:"",})
-const navy = new MoveModel({description: "See fireworks at the Navy Pier", completed:"",})
+const bean = new MoveModel({description: "Take a picture in front of the bean", completed: false})
+const pizza = new MoveModel({description: "Get a slice of deep dish pizza", completed: false,})
+const tower = new MoveModel({description: "Go to the top of Willis Tower", completed: false,})
+const navy = new MoveModel({description: "See fireworks at the Navy Pier", completed:false,})
 
-const bell = new MoveModel({description: "Tour Independence Hall and see the Liberty Bell", completed:""})
-const cheesesteak = new MoveModel({description: "Grab a cheesesteak", completed:"",})
-const art = new MoveModel({description: "Run up the steps of the Art Museum", completed:"",})
-const family = new MoveModel({description: "Remember to see niece and nephew", completed:"",})
+const bell = new MoveModel({description: "Tour Independence Hall and see the Liberty Bell", completed: false})
+const cheesesteak = new MoveModel({description: "Grab a cheesesteak", completed: false,})
+const art = new MoveModel({description: "Run up the steps of the Art Museum", completed: false,})
+const family = new MoveModel({description: "Remember to see niece and nephew", completed: false,})
 
 
 const locations = [atlanta, chicago, philadelphia]
