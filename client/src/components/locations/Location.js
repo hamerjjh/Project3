@@ -21,6 +21,9 @@ const LocationsStyles = styled.div`
     width: 95%;
     height: 70%
   }
+  h3{
+    text-align: center;
+  }
 `
 
 const Location = (props) => {
@@ -40,7 +43,7 @@ const Location = (props) => {
   return (
     <div>
     <LocationsStyles>
-      <h2> {props.city}  {props.state} </h2>
+      <h3> {props.city}  {props.state} </h3>
       <button onClick={createNewMove}>Add Activity</button>
       <button onClick={deleteLocation}>Delete Location</button>
     <MovesList moves={props.moves} deleteMove={props.deleteMove} location={props._id} />
