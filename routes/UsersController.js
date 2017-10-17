@@ -49,9 +49,9 @@ router.patch('/:id', async (req, res) => {
 //Delete
 router.delete('/:id', async (req, res) => {
     try {
-        const user = await UserModel.findById(req.params.userId).remove()
-        const users = await UserModel.find({})
-        res.json(users)
+        const userId =req.params.id;
+        const deleted = await UserModel.findByIdAndRemove(userId)
+        res.json(deleted)
     } catch (err) {
         res.send(err)
     }

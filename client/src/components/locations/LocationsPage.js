@@ -2,6 +2,7 @@ import React, { Component } from 'react'
 import axios from 'axios'
 import styled from 'styled-components'
 import LocationsList from './LocationsList'
+import { Redirect } from 'react-router-dom'
 
 const LocationsTitleStyle = styled.div`
   text-align:center;
@@ -34,10 +35,15 @@ class LocationsPage extends Component {
     this.setState({user: res.data})
   }
   createNewLocation = async () => {
-    const { userId } = this.props.match.params
-    const res = await axios.post(`/api/users/${userId}`)
-    console.log(res.data)
-    this.setState({user: res.data})
+    try {
+        const { userId } = this.props.match.params
+        const res = await axios.post(`/api/users/${userId}/locations`)
+        console.log(res.data)
+        this.setState({user: res.data})
+    } catch (err) {
+        console.log(err)
+    }
+    
   }
   deleteLocation = async (locationId) => {
     const { userId } = this.props.match.params
@@ -45,13 +51,19 @@ class LocationsPage extends Component {
     const res = await axios.delete(`/api/users/${userId}/locations/${id}`)
     this.setState({user: res.data})
   }
+  deleteUser = async () => {
+      const { userId } = this.props.match.params
+      const id = userId
+      const res = await axios.delete(`/api/users/${userId}`)
+      this.setState({ redirectToHomePage: true})
+  }
   handleChange = (event, locationId) => {
     const attribute = event.target.name
-    const clonedUser = {...this.state.user}
-    const location = clonedUser.locations.find(i => i._id === locationId)
+    const clonedUserModel = {...this.state.user}
+    const location = clonedUserModel.locations.find(i => i._id === locationId)
     console.log(location)
     location[attribute] = event.target.value
-    this.setState({user: clonedUser})
+    this.setState({user: clonedUserModel})
   }
   updateLocation = async (locationId) => {
     const { userId } = this.props.match.params
@@ -67,12 +79,15 @@ class LocationsPage extends Component {
   }
 
   render () {
+    if (this.state.redirectToHomePage){
+        return <Redirect to="/" />
+    }
     return (
       <div>
         <LocationsTitleStyle>
           <h1>{this.state.user.userName}'s Vacation Board</h1>
           <button onClick={this.createNewLocation}>New Location</button>
-         {/* <button onClick={this.deleteUserModel}> Delete User</button> */}
+         <button onClick={this.deleteUser}> Delete User</button>
           </LocationsTitleStyle>
           <LocationsList locations={this.state.user.locations}
           handleChange={this.state.user.locations}

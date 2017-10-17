@@ -3,14 +3,16 @@ const router = express.Router({mergeParams: true})
 const { UserModel, LocationModel } = require('../db/schema')
 
 router.post('/', async (req, res) => {
-  const newLocation = new Location()
-
-  const user = await UserModel.findById(req.params.userId)
-
-  user.locations.push(newLocations)
- 
-  const saved = await user.save()
-  res.json(saved)
+  try{
+    const newLocation = new LocationModel()
+    const user = await UserModel.findById(req.params.userId)
+    user.locations.push(newLocation)
+    const saved = await user.save()
+    res.send(saved)
+  } catch (err) {
+      res.send(err)
+  }
+  
 })
 
 router.patch('/:id', async (req, res) => {
@@ -18,7 +20,7 @@ router.patch('/:id', async (req, res) => {
   const user = await UserModel.findById(req.params.userId)
   const location = user.locations.id(req.params.id)
 
-  location.city = updatedLocaitons.city
+  location.city = updatedLocation.city
   location.state = updatedLocation.state
 
   const saved = await user.save()

@@ -36,8 +36,8 @@ const Locations = (props) => {
   return (
     <div>
     <LocationsStyles>
-      <input  onChange={handleChange} name="city" value={props.city} />
-      <textarea onChange={handleChange} name="state" value={props.state}/>
+      <input onBlur={updateLocation} onChange={handleChange} name="city" value={props.city} />
+      <input onBlur={updateLocation} onChange={handleChange} name="state" value={props.state}/>
       <button onClick={deleteLocation}>Delete Location</button>
     <MovesList moves={props.moves} />
     </LocationsStyles>
