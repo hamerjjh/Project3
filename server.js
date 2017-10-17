@@ -4,7 +4,7 @@ const bodyParser = require('body-parser');
 const mongoose = require('mongoose');
 const UsersController = require('./routes/UsersController')
 const LocationsController = require('./routes/LocationsController')
-
+const MovesController = require('./routes/MovesController')
 
 const app = express();
 mongoose.Promise = global.Promise;
@@ -25,6 +25,7 @@ app.use(bodyParser.json());
 app.use(express.static(__dirname + '/client/build/'));
 app.use('/api/users', UsersController)
 app.use('/api/users/:userId/locations', LocationsController)
+app.use('/api/users/:userId/locations/:locationId/moves', MovesController)
 
 app.get('/', (req,res) => {
     res.sendFile(__dirname + '/client/build/index.html')

@@ -16,14 +16,17 @@ const MovesStyles = styled.div`
   }
 `
 
-const Moves = (props) => {
+const Move = (props) => {
+  const deleteMove =() => {
+    props.deleteMove(props._id, props.location)
+  }
   return (
     <MovesStyles>
-      <input name="description" value={props.description} />
+      <h6> {props.description} </h6>
       {/* <textarea name="description" value={props.description}/> */}
-      <button>Delete Activity</button>
+      <button onClick={deleteMove}>Delete Activity</button>
     </MovesStyles>
   )
 }
 
-export default Moves
+export default Move

@@ -42,8 +42,18 @@ class LocationsPage extends Component {
         this.setState({user: res.data})
     } catch (err) {
         console.log(err)
+    }  
+  }
+
+  createNewMove = async (locationId) => {
+    try {
+        const { userId } = this.props.match.params
+        const res = await axios.post(`/api/users/${userId}/locations/${locationId}/moves`)
+        // console.log(this.props)
+       this.setState({user: res.data})
+    } catch (err) {
+        console.log(err)
     }
-    
   }
   deleteLocation = async (locationId) => {
     const { userId } = this.props.match.params
@@ -57,6 +67,12 @@ class LocationsPage extends Component {
       const res = await axios.delete(`/api/users/${userId}`)
       this.setState({ redirectToHomePage: true})
   }
+  deleteMove = async (movesId, locationId) => {
+    const { userId } = this.props.match.params
+    const id = userId
+    const res = await axios.delete(`/api/users/${userId}/locations/${locationId}/moves/${movesId}`)
+    this.setState({user: res.data})
+} 
   handleChange = (event, locationId) => {
     const attribute = event.target.name
     const clonedUserModel = {...this.state.user}
@@ -91,8 +107,8 @@ class LocationsPage extends Component {
           </LocationsTitleStyle>
           <LocationsList locations={this.state.user.locations}
           handleChange={this.state.user.locations}
-          deleteLocation={this.deleteLocation}
-          updateIdea={this.updateLocation}
+          deleteLocation={this.deleteLocation} createNewMove={this.createNewMove}
+          updateIdea={this.updateLocation} deleteMove={this.deleteMove}
           />
       </div>
     )

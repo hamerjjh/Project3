@@ -1,6 +1,6 @@
-import React from 'react'
+import React, { Component } from 'react'
 import styled from 'styled-components'
-import Moves from './Moves'
+import Move from './Move'
 
 const MovesListStyles = styled.div`
   width: 95%;
@@ -9,16 +9,26 @@ const MovesListStyles = styled.div`
   flex-wrap: wrap;
 `
 
-const MovesList = (props) => {
-  return (
-    <MovesListStyles>
-      {props.moves.map((move) => {
-        return (
-          <Moves key={move._id} description={move.description} completed={move.completed} />
-        )
-      })}
-    </MovesListStyles>
-  )
+class MovesList extends Component {
+  state= {
+    move: {
+      description: '',
+      completed: false, 
+    }
+  }
+
+  render() {
+    return (
+      <MovesListStyles>
+        {this.props.moves.map((move) => {
+          return (
+            <Move key={move._id} _id={move._id} description={move.description} completed={move.completed} deleteMove={this.props.deleteMove} location={this.props.location}/>
+          )
+        })}
+      </MovesListStyles>
+    )
+  } 
 }
+
 
 export default MovesList

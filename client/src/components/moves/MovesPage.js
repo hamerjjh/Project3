@@ -31,13 +31,22 @@ class MovesPage extends Component {
     const res = await axios.get(`/api/users/${userId}`)
     this.setState({user: res.data})
   }
-
+  createNewMove = async () => {
+    try {
+        const { userId, locationId } = this.props.match.params
+        const res = await axios.post(`/api/users/${userId}/locations/${locationId}/moves`)
+        console.log(res.data)
+        this.setState({user: res.data})
+    } catch (err) {
+        console.log(err)
+    }
+  }
   render () {
     return (
       <div>
         <MovesTitleStyle>
           <h1>{this.state.user.userName}'s Activity Board</h1>
-          <button>New Activity</button>
+          <button onClick={this.createNewMove}>New Activity</button>
         </MovesTitleStyle>
         <MovesList moves={this.state.user.moves} />
       </div>

@@ -23,7 +23,7 @@ const LocationsStyles = styled.div`
   }
 `
 
-const Locations = (props) => {
+const Location = (props) => {
     const deleteLocation = () => {
         props.deleteLocation(props._id)
     }
@@ -33,16 +33,20 @@ const Locations = (props) => {
       const updateLocation = () => {
         props.updateLocation(props._id)
       }
+      const createNewMove =() => {
+        props.createNewMove(props._id)
+      }
+      
   return (
     <div>
     <LocationsStyles>
-      <input onBlur={updateLocation} onChange={handleChange} name="city" value={props.city} />
-      <input onBlur={updateLocation} onChange={handleChange} name="state" value={props.state}/>
+      <h1> {props.city}  {props.state} </h1>
+      <button onClick={createNewMove}>Add Activity</button>
       <button onClick={deleteLocation}>Delete Location</button>
-    <MovesList moves={props.moves} />
+    <MovesList moves={props.moves} deleteMove={props.deleteMove} location={props._id} />
     </LocationsStyles>
     </div>
   )
 }
 
-export default Locations
+export default Location
