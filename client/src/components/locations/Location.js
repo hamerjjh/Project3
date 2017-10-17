@@ -40,7 +40,7 @@ const Location = (props) => {
   return (
     <div>
     <LocationsStyles>
-      <h1> {props.city}  {props.state} </h1>
+      <h2> {props.city}  {props.state} </h2>
       <button onClick={createNewMove}>Add Activity</button>
       <button onClick={deleteLocation}>Delete Location</button>
     <MovesList moves={props.moves} deleteMove={props.deleteMove} location={props._id} />

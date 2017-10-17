@@ -1,4 +1,4 @@
-import React from 'react'
+import React, {Component} from 'react'
 import styled from 'styled-components'
 
 const MovesStyles = styled.div`
@@ -16,17 +16,32 @@ const MovesStyles = styled.div`
   }
 `
 
-const Move = (props) => {
-  const deleteMove =() => {
-    props.deleteMove(props._id, props.location)
+class Move extends Component {
+  state ={
+    toggle: false
   }
-  return (
-    <MovesStyles>
-      <h6> {props.description} </h6>
-      {/* <textarea name="description" value={props.description}/> */}
-      <button onClick={deleteMove}>Delete Activity</button>
-    </MovesStyles>
-  )
+
+  deleteMove = () => {
+    this.props.deleteMove(this.props._id, this.props.location)
+  }
+
+  toggleInput = () => {
+    this.setState({toggle: !this.state.toggle})
+  }
+  render() {
+    return (
+      <MovesStyles>
+        {this.state.toggle 
+          ? <textarea onBlur={this.toggleInput} name="description" value={this.props.description}/>
+          : <h5 onClick={this.toggleInput}> {this.props.description} </h5>
+        }
+        
+        
+        <button onClick={this.deleteMove}>Delete Activity</button>
+      </MovesStyles>
+    )
+  }
+  
 }
 
 export default Move
