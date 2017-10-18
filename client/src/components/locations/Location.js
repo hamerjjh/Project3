@@ -3,10 +3,18 @@ import styled from 'styled-components'
 import MovesList from '../moves/MovesList.js'
 
 const LocationsStyles = styled.div`
-  height: 300px;
-  width: 300px;
-  margin: 20px;
-  background-color: rgba(253, 255, 0, 0.79);
+  display: inline-block;
+	width:75%;
+	background: rgba(253, 255, 0, 0.79);
+    border: 1px solid #B9D6C2;
+    margin-bottom: 8px;
+    margin-right: 8px;
+    margin-left: 180px;
+    border-radius: 50px;
+    padding: 2em;
+    position: relative;
+    min-width: 340px;
+    max-width:800px;
   input {
     font-weight: bold;
   }
