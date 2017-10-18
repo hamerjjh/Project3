@@ -12,6 +12,9 @@ const HomePageStyles = styled.div`
    h3{
     text-align: center;
     }
+    a{
+      padding: 10px;
+    }
 `
 
 class HomePage extends Component {
@@ -37,7 +40,7 @@ class HomePage extends Component {
     return (
       <HomePageStyles>
         <h1>Vacation Planners</h1>
-        <h3>~A Vacation Without A Plan Is Just A Wish~</h3>
+        <h3>~A Vacation Without A Plan Is Just A Trip~</h3>
         <h4>Click User Name and Plan Away</h4>
         {this.state.users.map((user) => {
           return (<Link key={user._id} to={`/users/${user._id}`}>{user.userName}</Link>)

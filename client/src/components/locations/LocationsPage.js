@@ -87,9 +87,15 @@ class LocationsPage extends Component {
     const location = clonedUserModel.locations.find(i => i._id === locationId)
     const move = location.moves.find(i => i._id === moveId)
     console.log(move)
-    move[attribute] = event.target.value
+    move[attribute] = event.target.type === "checkbox" ? event.target.checked : event.target.value
     this.setState({user: clonedUserModel})
+    const checked = event.target.type === "checkbox"
+    if (checked) {
+      this.updateMove(locationId, moveId)
+    } 
   }
+  
+
   updateLocation = async (locationId) => {
     const { userId } = this.props.match.params
     const id = locationId

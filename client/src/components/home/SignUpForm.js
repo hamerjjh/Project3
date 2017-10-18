@@ -12,7 +12,7 @@ const SignUpFormStyles = styled.div`
   form{
       text-align: center;
     }
-
+ 
 
 
 `
