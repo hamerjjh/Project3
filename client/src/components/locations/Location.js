@@ -5,11 +5,11 @@ import MovesList from '../moves/MovesList.js'
 const LocationsStyles = styled.div`
   display: inline-block;
 	width:75%;
-	background: rgba(253, 255, 0, 0.79);
+	background-color: lightyellow;
     border: 1px solid #B9D6C2;
     margin-bottom: 8px;
     margin-right: 8px;
-    margin-left: 180px;
+    margin-left: 8px;
     border-radius: 50px;
     padding: 2em;
     position: relative;
@@ -33,7 +33,8 @@ const LocationsStyles = styled.div`
     text-align: center;
   }
   button {
-    text-align: center;
+    display: inline;
+    justify-content: center;
   }
 `
 

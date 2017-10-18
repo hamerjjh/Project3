@@ -6,6 +6,7 @@ const MovesListStyles = styled.div`
   width: 95%;
   margin: 0 auto;
   display: flex;
+  flex-direction: column;
   flex-wrap: wrap;
 `
 

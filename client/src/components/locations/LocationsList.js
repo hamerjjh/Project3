@@ -3,9 +3,8 @@ import styled from 'styled-components'
 import Location from './Location'
 
 const LocationsListStyles = styled.div`
-  width: 95%;
-  margin: 0 auto;
   display: flex;
+  flex-direction: row;
   flex-wrap: wrap;
 `
 

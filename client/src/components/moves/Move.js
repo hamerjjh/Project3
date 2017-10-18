@@ -2,9 +2,9 @@ import React, {Component} from 'react'
 import styled from 'styled-components'
 
 const MovesStyles = styled.div`
-
+  display: list-item;
+  flex-direction: column; 
   input, textarea {
-    display: inline-block;
     font-size: 1.2rem;
     margin: 10px 0;
     border: none;
