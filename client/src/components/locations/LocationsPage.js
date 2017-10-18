@@ -131,7 +131,7 @@ class LocationsPage extends Component {
       <div>
         <LocationsTitleStyle>
           <h1>{this.state.user.userName}'s Vacation Board</h1>
-          <button onClick={this.createNewLocation}>New Location</button>
+          <button onClick={this.createNewLocation}>Add Location</button>
          <button onClick={this.deleteUser}> Delete User</button>
           </LocationsTitleStyle>
           <LocationsList locations={this.state.user.locations}

@@ -41,7 +41,7 @@ class HomePage extends Component {
       <HomePageStyles>
         <h1>Vacation Planners</h1>
         <h3>~A Vacation Without A Plan Is Just A Trip~</h3>
-        <h4>Click User Name and Plan Away</h4>
+        <h4>Click UserName and Continue</h4>
         {this.state.users.map((user) => {
           return (<Link key={user._id} to={`/users/${user._id}`}>{user.userName}</Link>)
         })}
