@@ -17,7 +17,9 @@ const LocationsList = (props) => {
           <Location key={location._id} _id={location._id}  
           handleChange={props.handleChange}
           updateLocation={props.updateLocation} deleteLocation={props.deleteLocation}
-          city={location.city} state={location.state} moves={location.moves} createNewMove={props.createNewMove} deleteMove={props.deleteMove}/>
+          city={location.city} state={location.state} moves={location.moves} 
+          createNewMove={props.createNewMove} deleteMove={props.deleteMove} 
+          handleMoveChange={props.handleMoveChange} updateMove={props.updateMove}/>
         )
       })}
     </LocationsListStyles> 

@@ -15,11 +15,11 @@ const MovesSchema = new Schema({
 const LocationsSchema = new Schema({
     city: {
         type: String,
-        default: 'New Idea Description'
+        default: 'city'
     },
     state: {
         type: String,
-        default: false
+        default: "state"
     },
     moves: [MovesSchema]
 })

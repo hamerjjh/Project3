@@ -20,16 +20,25 @@ router.post('/', async (req, res) => {
     
   })
 
-  router.patch('/:id', async (req, res) => {
-    const updatedMove = req.body.move
-    const user = await UserModel.findById(req.params.userId)
-    const move = user.moves.id(req.params.id)
-  
-    move.city = updatedMove.city
-    move.state = updatedMove.state
-  
-    const saved = await user.save()
-    res.json(saved)
+  router.put('/:id', async (req, res) => {
+      try {
+        const updatedMove = req.body.move
+        const user = await UserModel.findById(req.params.userId)
+        const location = user.locations.id(req.params.locationId)
+    
+        const move = location.moves.id(req.params.id)
+    
+        move.description = updatedMove.description
+        move.completed = updatedMove.completed
+      
+       
+      
+        const saved = await user.save()
+        res.json(saved)      
+      } catch (err){
+          console.log(err)
+      }
+    
   })
 
   router.delete('/:id', async (req, res) => {

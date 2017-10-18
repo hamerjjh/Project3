@@ -25,14 +25,19 @@ class Move extends Component {
     this.props.deleteMove(this.props._id, this.props.location)
   }
 
+  handleMoveChange = (event) => {
+    this.props.handleMoveChange(event, this.props.location, this.props._id)
+  }
+
   toggleInput = () => {
     this.setState({toggle: !this.state.toggle})
+    this.props.updateMove(this.props.location, this.props._id)
   }
   render() {
     return (
       <MovesStyles>
         {this.state.toggle 
-          ? <textarea onBlur={this.toggleInput} name="description" value={this.props.description}/>
+          ? <textarea onChange={this.handleMoveChange} onBlur={this.toggleInput} name="description" value={this.props.description}/>
           : <h5 onClick={this.toggleInput}> {this.props.description} </h5>
         }
         

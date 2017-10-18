@@ -81,6 +81,15 @@ class LocationsPage extends Component {
     location[attribute] = event.target.value
     this.setState({user: clonedUserModel})
   }
+  handleMoveChange = (event, locationId, moveId) => {
+    const attribute = event.target.name
+    const clonedUserModel = {...this.state.user}
+    const location = clonedUserModel.locations.find(i => i._id === locationId)
+    const move = location.moves.find(i => i._id === moveId)
+    console.log(move)
+    move[attribute] = event.target.value
+    this.setState({user: clonedUserModel})
+  }
   updateLocation = async (locationId) => {
     const { userId } = this.props.match.params
     const id = locationId
@@ -88,8 +97,22 @@ class LocationsPage extends Component {
     const clonedUserModel = {...this.state.user}
     const location = clonedUserModel.locations.find(i => i._id === locationId)
 
-    const res = await axios.patch(`/api/users/${userId}/locations/${id}`, {
+    const res = await axios.put(`/api/users/${userId}/locations/${id}`, {
       location: location
+    })
+    this.setState({user: res.data})
+  }
+  updateMove = async (locationId, moveId) => {
+    console.log("IN HERE")
+    const { userId } = this.props.match.params
+    const id = moveId
+
+    const clonedUserModel = {...this.state.user}
+    const location = clonedUserModel.locations.find(i => i._id === locationId)
+    const move = location.moves.find(i => i._id === moveId)
+
+    const res = await axios.put(`/api/users/${userId}/locations/${locationId}/moves/${id}`, {
+      move: move
     })
     this.setState({user: res.data})
   }
@@ -106,9 +129,10 @@ class LocationsPage extends Component {
          <button onClick={this.deleteUser}> Delete User</button>
           </LocationsTitleStyle>
           <LocationsList locations={this.state.user.locations}
-          handleChange={this.state.user.locations}
+          handleChange={this.handleChange}
           deleteLocation={this.deleteLocation} createNewMove={this.createNewMove}
-          updateIdea={this.updateLocation} deleteMove={this.deleteMove}
+          updateLocation={this.updateLocation} deleteMove={this.deleteMove} 
+          handleMoveChange={this.handleMoveChange} updateMove={this.updateMove}
           />
       </div>
     )

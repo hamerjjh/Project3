@@ -22,7 +22,9 @@ class MovesList extends Component {
       <MovesListStyles>
         {this.props.moves.map((move) => {
           return (
-            <Move key={move._id} _id={move._id} description={move.description} completed={move.completed} deleteMove={this.props.deleteMove} location={this.props.location}/>
+            <Move key={move._id} _id={move._id} description={move.description} completed={move.completed} 
+            deleteMove={this.props.deleteMove} handleMoveChange={this.props.handleMoveChange} 
+            updateMove={this.props.updateMove} location={this.props.location}/>
           )
         })}
       </MovesListStyles>
