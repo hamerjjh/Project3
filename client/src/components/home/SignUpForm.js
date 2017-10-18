@@ -2,7 +2,20 @@
 import React, { Component } from 'react'
 import axios from 'axios'
 import { Redirect } from 'react-router-dom'
+import styled from 'styled-components'
 
+const SignUpFormStyles = styled.div`
+    
+  h2{
+    text-align: center;
+  }
+  form{
+      text-align: center;
+    }
+
+
+
+`
 class SignUpForm extends Component {
   state = {
     newUser: {
@@ -34,11 +47,11 @@ class SignUpForm extends Component {
           return <Redirect to={`/users/${this.state.newUserId}`} />
       }
     return (
-      <div>
-        <h1>Sign-Up</h1>
+      <SignUpFormStyles>
+        <h2>Sign-Up</h2>
         <form onSubmit={this.handleSubmit}>
           <div>
-            <label htmlFor="userName">User Name</label>
+            <label htmlFor="userName">Name</label>
             <input onChange={this.handleChange} name="userName" type="text" value={this.state.newUser.userName} />
           </div>
           <div>
@@ -47,7 +60,7 @@ class SignUpForm extends Component {
           </div>
           <button>Sign Up</button>
         </form>
-      </div>
+      </SignUpFormStyles>
     )
   }
 }

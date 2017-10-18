@@ -4,7 +4,7 @@ import styled from 'styled-components'
 const MovesStyles = styled.div`
 
   input, textarea {
-    display: block;
+    display: inline-block;
     font-size: 1.2rem;
     margin: 10px 0;
     border: none;

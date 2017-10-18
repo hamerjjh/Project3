@@ -4,7 +4,7 @@ const Schema = mongoose.Schema;
 const MovesSchema = new Schema({
     description: {
         type: String,
-        default: 'New Idea Description'
+        default: 'Enter New Activity'
     },
     completed: {
         type: Boolean,

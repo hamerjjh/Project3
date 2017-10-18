@@ -24,6 +24,9 @@ const LocationsStyles = styled.div`
   h3{
     text-align: center;
   }
+  button {
+    text-align: center;
+  }
 `
 
 class Location extends Component {
