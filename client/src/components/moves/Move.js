@@ -16,7 +16,7 @@ const MovesStyles = styled.div`
   }
 
   input[type="checkbox"]:checked + label {
-    color:red;
+    color:green;
     text-decoration: line-through;
   } 
 `

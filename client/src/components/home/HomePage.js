@@ -15,6 +15,12 @@ const HomePageStyles = styled.div`
     a{
       padding: 10px;
     }
+    img {
+      margin-left: 380px;
+      height: 350px;
+      width: 500px;
+
+    }
 `
 
 class HomePage extends Component {
@@ -41,11 +47,12 @@ class HomePage extends Component {
       <HomePageStyles>
         <h1>Vacation Planners</h1>
         <h3>~A Vacation Without A Plan Is Just A Trip~</h3>
-        <h4>Click UserName and Continue</h4>
+        <h4>Choose Name and Continue</h4>
         {this.state.users.map((user) => {
           return (<Link key={user._id} to={`/users/${user._id}`}>{user.userName}</Link>)
         })}
         <SignUpForm />
+        <img src ="http://images.mentalfloss.com/sites/default/files/passportsprim.png?resize=1100x740" />
       </HomePageStyles>
     )
   }
