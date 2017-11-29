@@ -20,6 +20,10 @@ const HomePageStyles = styled.div`
       height: 350px;
       width: 500px;
 
+      @media only screen and (min-width: 1600px) {
+        margin-left: 400px
+      }
+
     }
 `
 
